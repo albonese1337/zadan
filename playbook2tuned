@@ -1,6 +1,6 @@
 ---
 - name: zadanie2
-  hosts: all
+  hosts: my_vms
   become: true
 
   tasks:

@@ -1,0 +1,20 @@
+---
+- name: zadanie3
+  hosts: all
+  become: true
+
+  vars:
+    custom_motd_message: |
+      ==================================================
+      Приветствую, путник мира it.
+      Желаю тебе отличного рабочего дня!
+      ==================================================
+
+  tasks:
+    - name: Обновить приветствие системы(motd)
+      ansible.builtin.copy:
+        content: "{{ custom_motd_message }}"
+        dest: "/etc/motd"
+        owner: root
+        group: root
+        mode: '0644'

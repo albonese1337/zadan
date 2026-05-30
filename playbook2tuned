@@ -1,0 +1,16 @@
+---
+- name: zadanie2
+  hosts: all
+  become: true
+
+  tasks:
+    - name: inst tuned
+      ansible.builtin.package:
+        name: tuned
+        state: present
+
+    - name: start tuned
+      ansible.builtin.service:
+        name: tuned
+        state: started
+        enabled: true

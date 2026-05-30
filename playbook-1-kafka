@@ -1,0 +1,21 @@
+---
+- name: Zadanie1
+  hosts: all       
+  become: true
+
+  tasks:
+    - name: download Kafka
+      ansible.builtin.get_url:
+        url: "https://www.apache.org/dyn/closer.lua/kafka/4.3.0/kafka-4.3.0-src.tgz?action=download"
+        dest: "/tmp/kafka.tgz"
+
+    - name: mkdir
+      ansible.builtin.file:
+        path: "/opt/kafka"
+        state: directory
+
+    - name: untgz
+      ansible.builtin.unarchive:
+        src: "/tmp/kafka.tgz"
+        dest: "/opt/kafka"
+        remote_src: true

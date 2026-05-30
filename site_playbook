@@ -1,1 +1,7 @@
+---
+- name: Развертывание Apache с характеристиками хостов по заданию
+  hosts: my_vms
+  become: true
 
+  roles:
+    - apache_turk
